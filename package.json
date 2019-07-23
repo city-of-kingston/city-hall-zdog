@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "next",
-    "build": "npx babel components/index.js --out-dir dist"
+    "build": "npx babel components --out-dir dist"
   },
   "author": "",
   "license": "ISC",
