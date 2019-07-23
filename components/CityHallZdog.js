@@ -3,7 +3,7 @@ import { Anchor, Ellipse, Cylinder, Box, Hemisphere, Rect, RoundedRect, Group, S
 
 const LIMESTONE = "#E2E2DC";
 const LIMESTONE_DARK = "#cfcfc8";
-const GROUND = "#fff";
+const GROUND = "#fafafa";
 const ROOF = "#707065";
 const ROOF_GREEN = "#96BAA0";
 const WINDOW = "#DBF0F9";
@@ -16,7 +16,7 @@ const Windows = ({w=6, h=2}) => {
 	for (let x = 0; x < w; x++) {
 		for (let y = 0; y < h; y++) {
 			windows.push((
-				<Anchor translate={{x: (x - w / 2 + 0.5) * 2, y: (y - h / 2 + 0.5) * 3}}>
+				<Anchor key={`${x}.${y}`} translate={{x: (x - w / 2 + 0.5) * 2, y: (y - h / 2 + 0.5) * 3}}>
 					<RoundedRect width={1} height={2.2} fill color={WINDOW} />
 					<RoundedRect width={1} height={2.2} stroke={3} color={WINDOW_FRAME} />
 				</Anchor>
@@ -38,13 +38,21 @@ const Spire = ({color=ROOF, ...props}) => (
 const CityHallZdog = () => {
 	const ref = useRef(undefined);
 	useRender(() => {
-		ref.current.rotate.x = Math.sin(Date.now() / 1000) * Math.PI / 12;
-		ref.current.rotate.y += 0.01;
+		ref.current.rotate.x = -Math.PI / 8;
+		// ref.current.rotate.x = (Math.sin(Date.now() / 1000) - 1.3) * Math.PI / 12;
+		ref.current.rotate.y += 0.005;
 	});
 
 	return (
-		<Anchor ref={ref} scale={10}>
+		<Anchor ref={ref} scale={10} rotate={{y: Math.PI * 0.8 }}>
+			{/* Ground */}
 			<Group>
+				<Ellipse diameter={50} fill rotate={{x:Math.PI/2}} color={GROUND}/>
+				<Shape translate={{y: 100000}} visible={false}/>
+			</Group>
+
+			<Anchor translate={{z: -5}}>
+			{/*<Group>
 				<Shape translate={{y: 50000000}} />
 				<Box width={14} height={3} depth={15} translate={{z: 15.5, y:1.5, x: 12}}
 					topFace="transparent" bottomFace={"#777"} color={LIMESTONE_DARK}/>
@@ -55,8 +63,9 @@ const CityHallZdog = () => {
 				<Rect width={300} height={200} translate={{z: 123}} rotate={{x: Math.PI / 2}} fill color={GROUND}/>
 				<Rect width={100} height={15} translate={{z: 15.5, x: 69}} rotate={{x: Math.PI / 2}} fill color={GROUND}/>
 				<Rect width={100} height={15} translate={{z: 15.5, x: -69}} rotate={{x: Math.PI / 2}} fill color={GROUND}/>
-			</Group>
+			</Group>*/}
 
+			{/* Front base + noth/south wing roofs */}
 			<Group translate={{y: -HEIGHT}}>
 				<Anchor translate={{y: HEIGHT / 2}}>
 					<Box width={30} depth={10} height={HEIGHT} color={LIMESTONE} />
@@ -89,6 +98,7 @@ const CityHallZdog = () => {
 				</Anchor>
 			</Group>
 
+			{/* Big spire on top */}
 			<Group translate={{ y: -HEIGHT - 1}}>
 				<Box width={8} depth={8} height={2} translate={{y: -1 - 1}} color={ROOF}/>
 				<Cylinder diameter={5} length={4} color={LIMESTONE}
@@ -101,6 +111,7 @@ const CityHallZdog = () => {
 					translate={{y:-1 - 2 - 4 - 2.5 - 1.5 - 0.5 - 0.5}} rotate={{x: Math.PI / 2}} />
 			</Group>
 
+			{/* Front facade */}
 			<Group>
 				<Anchor translate={{y: -HEIGHT / 2}}>
 					<Box width={10} depth={2} height={2} translate={{ z: -1 - 5, y: -HEIGHT/2 + 1}} color={LIMESTONE_DARK} />
@@ -135,6 +146,7 @@ const CityHallZdog = () => {
 				</Anchor>
 			</Group>
 
+			{/* Back windows */}
 			<Group>
 				<Anchor translate={{y: -HEIGHT / 2, z: 5, x: -11}}>
 					<Windows />
@@ -152,6 +164,7 @@ const CityHallZdog = () => {
 				<Windows w={9}/>
 			</Group>
 
+			{/* Market wing + roof */}
 			<Group translate={{y: -HEIGHT+2}}>
 				<Anchor translate={{y: HEIGHT / 2 - 1}}>
 					<Box width={10} depth={20} translate={{z:15}} height={HEIGHT-2} color={LIMESTONE} />
@@ -165,7 +178,7 @@ const CityHallZdog = () => {
 					<Spire translate={{y: -1}} color={ROOF_GREEN}/>
 				</Anchor>
 			</Group>
-		</Anchor>
+		</Anchor></Anchor>
 	);
 }
 
