@@ -25,7 +25,7 @@ const Window = (props) => (
 );
 
 const PumpHouseZdog = () => (
-	<Anchor scale={10} rotate={{y: Math.PI * 0.8}}>
+	<Anchor scale={10} rotate={{y: Math.PI * 0.8, x: -Math.PI / 8 }}>
 		{/* Ground */}
 		<Group>
 			<Ellipse diameter={50} fill rotate={{x:Math.PI/2}} color={GROUND}/>
