@@ -86,17 +86,11 @@ var Spire = function Spire(_ref2) {
 };
 
 var CityHallZdog = function CityHallZdog() {
-  var ref = (0, _react.useRef)(undefined);
-  (0, _reactZdog.useRender)(function () {
-    ref.current.rotate.x = -Math.PI / 8; // ref.current.rotate.x = (Math.sin(Date.now() / 1000) - 1.3) * Math.PI / 12;
-
-    ref.current.rotate.y += 0.005;
-  });
   return _react["default"].createElement(_reactZdog.Anchor, {
-    ref: ref,
     scale: 10,
     rotate: {
-      y: Math.PI * 0.8
+      y: Math.PI * 0.8,
+      x: -Math.PI / 8
     }
   }, _react["default"].createElement(_reactZdog.Group, null, _react["default"].createElement(_reactZdog.Ellipse, {
     diameter: 50,

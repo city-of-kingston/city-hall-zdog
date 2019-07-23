@@ -1,5 +1,5 @@
-import React, { Fragment, useRef } from 'react';
-import { Anchor, Ellipse, Cylinder, Box, Hemisphere, Rect, RoundedRect, Group, Shape, Polygon, useRender } from 'react-zdog';
+import React, { Fragment } from 'react';
+import { Anchor, Ellipse, Cylinder, Box, Hemisphere, Rect, RoundedRect, Group, Shape, Polygon } from 'react-zdog';
 
 const LIMESTONE = "#E2E2DC";
 const LIMESTONE_DARK = "#cfcfc8";
@@ -35,23 +35,15 @@ const Spire = ({color=ROOF, ...props}) => (
 	</Anchor>
 );
 
-const CityHallZdog = () => {
-	const ref = useRef(undefined);
-	useRender(() => {
-		ref.current.rotate.x = -Math.PI / 8;
-		// ref.current.rotate.x = (Math.sin(Date.now() / 1000) - 1.3) * Math.PI / 12;
-		ref.current.rotate.y += 0.005;
-	});
+const CityHallZdog = () => (
+	<Anchor scale={10} rotate={{y: Math.PI * 0.8, x: -Math.PI / 8 }}>
+		{/* Ground */}
+		<Group>
+			<Ellipse diameter={50} fill rotate={{x:Math.PI/2}} color={GROUND}/>
+			<Shape translate={{y: 100000}} visible={false}/>
+		</Group>
 
-	return (
-		<Anchor ref={ref} scale={10} rotate={{y: Math.PI * 0.8 }}>
-			{/* Ground */}
-			<Group>
-				<Ellipse diameter={50} fill rotate={{x:Math.PI/2}} color={GROUND}/>
-				<Shape translate={{y: 100000}} visible={false}/>
-			</Group>
-
-			<Anchor translate={{z: -5}}>
+		<Anchor translate={{z: -5}}>
 			{/*<Group>
 				<Shape translate={{y: 50000000}} />
 				<Box width={14} height={3} depth={15} translate={{z: 15.5, y:1.5, x: 12}}
@@ -178,8 +170,8 @@ const CityHallZdog = () => {
 					<Spire translate={{y: -1}} color={ROOF_GREEN}/>
 				</Anchor>
 			</Group>
-		</Anchor></Anchor>
-	);
-}
+		</Anchor>
+	</Anchor>
+);
 
 export default CityHallZdog;

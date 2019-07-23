@@ -1,3 +1,4 @@
+import React from 'react';
 import { Illustration } from 'react-zdog';
 import CityHallZdog from '../components/CityHallZdog';
 
