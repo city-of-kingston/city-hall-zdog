@@ -1,11 +1,14 @@
 import React from 'react';
 import { Illustration } from 'react-zdog';
-import CityHallZdog from '../components/CityHallZdog';
+import RotatingAnchor from '../components/RotatingAnchor';
+import PumpHouseZdog from '../components/PumpHouseZdog';
 
 const Index = () => (
   <div style={{width: '800px', height: '800px'}}>
     <Illustration>
-      <CityHallZdog />
+    	<RotatingAnchor>
+      		<PumpHouseZdog />
+      	</RotatingAnchor>
     </Illustration>
   </div>
 );

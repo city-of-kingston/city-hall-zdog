@@ -2,10 +2,10 @@
   "name": "city-hall-zdog",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/CityHallZdog.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "next",
-    "build": "npx babel components/CityHallZdog.js --out-dir dist"
+    "build": "npx babel components/index.js --out-dir dist"
   },
   "author": "",
   "license": "ISC",
