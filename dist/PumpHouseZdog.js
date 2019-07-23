@@ -55,8 +55,7 @@ var PumpHouseZdog = function PumpHouseZdog() {
   return _react["default"].createElement(_reactZdog.Anchor, {
     scale: 10,
     rotate: {
-      y: Math.PI * 0.8,
-      x: -Math.PI / 8
+      y: Math.PI * 0.8
     }
   }, _react["default"].createElement(_reactZdog.Group, null, _react["default"].createElement(_reactZdog.Ellipse, {
     diameter: 50,

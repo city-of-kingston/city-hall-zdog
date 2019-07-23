@@ -4,7 +4,7 @@ import { Anchor, useRender } from 'react-zdog';
 const RotatingAnchor = ({ children }) => {
 	const ref = useRef(undefined);
 	useRender(() => {
-		ref.current.rotate.y += 0.005;
+		ref.current.rotate.y = (Date.now() - window.performance.timing.navigationStart) / 3000;
 	});
 
 	return (
